@@ -1,0 +1,755 @@
+/* HOMEPAGE STYLING */
+/* main */
+
+body.antiScroll {
+	overflow-Y:hidden;
+}
+
+
+/* black friday */
+main section:first-of-type a img {
+	width:100%;
+
+	transition:1s;
+}
+
+
+/* carousel categoriën */
+
+.caroCarrousel {
+	position:relative;
+	overflow:hidden;
+	outline:none;
+}
+
+.caroCarrousel > ul {
+	display:flex;
+	overflow-X:auto; 
+	gap:.5em;
+	/* ORIGINEEL OVERFLOW HIDDEN */
+	scroll-snap-type: inline mandatory;
+	scroll-behavior: smooth;
+
+	-webkit-overflow-scrolling: touch; /* voor iOS*/
+	-ms-overflow-style: none; /* voor IE */
+	scrollbar-width: none; /* voor firefox */
+
+}
+
+.caroCarrousel > ul::-webkit-scrollbar {
+	display:none;
+}
+
+.caroCarrousel > ul li {
+	display:flex;
+	flex-direction:column-reverse;
+	align-items:center;
+	justify-content:center;
+
+	flex-basis:calc(100%/3.5);
+	flex-shrink:0;
+
+	max-width:7em;
+
+	scroll-snap-align:center;
+
+	color:var(--color-text);
+}
+
+.caroCarrousel > ul li img {
+	display:block;
+	width:100%;
+}
+
+.caroCarrousel > a {
+	position:absolute;
+	width:2.5em;
+	aspect-ratio:1/1;
+	border-radius: 10%;
+
+	top: 50%;
+	transform:translateY(-50%);
+
+	color: var(--brand-color);
+	background-color: var(--color-background);
+	outline:none;
+
+	display:grid;
+  	place-items:center;
+  
+  	transition: 0.5s;
+
+}
+
+.caroCarrousel > a[href="previous"] {
+	left:-3.5em;
+}
+
+.caroCarrousel > a[href="next"] {
+	right:-3.5em;
+}
+
+.caroCarrousel > a:hover {
+	color:var(--color-background);
+	background-color: var(--brand-color);
+
+	aspect-ratio:1/1.5;
+
+}
+
+.caroCarrousel > a:focus {
+	background-color: var(--star-color);
+}
+
+.caroCarrousel > a:active {
+	color: var(--brand-color);
+	background-color: var(--color-background);
+
+	transform:scale(.5) translateY(-50%);
+
+}
+
+.caroCarrousel:hover > a[href="previous"],
+.caroCarrousel:focus-within > a[href="previous"] {
+  left:.5em;
+}
+
+.caroCarrousel:hover > a[href="next"],
+.caroCarrousel:focus-within > a[href="next"] {
+  right:.5em;
+}
+
+.caroCarrousel > a::before,
+.caroCarrousel > a::after {
+  content: "";
+  position: absolute;
+  width: 1em; height: 4px;
+  background-color: currentColor;
+}
+
+.caroCarrousel > a[href=previous]::before {
+	transform-origin: 2px center;
+	transform: translateY(0) rotate(45deg);
+}
+.caroCarrousel > a[href=previous]::after {
+	transform-origin: 2px center;
+	transform: translateY(0) rotate(-45deg);
+}
+
+.caroCarrousel > a[href=next]::before {
+	transform-origin: calc(100% - 2px) center;
+	transform: translateY(0) rotate(45deg);
+}
+.caroCarrousel > a[href=next]::after {
+	transform-origin: calc(100% - 2px) center;
+	transform: translateY(0) rotate(-45deg);
+}
+
+main section:nth-of-type(2) nav ul li a{
+	background-color: var(--color-background);
+	box-shadow: 1em 1em 1em var(--brand-color);
+
+}
+
+
+
+/* advertentie */
+main section:nth-of-type(3) {
+	display:flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	justify-content: center;
+	gap:.5em;
+
+
+	/* voor als responsive, dan */
+	max-width:30em;
+
+}
+
+main section:nth-of-type(3) h2 {
+	color:var(--border-color-links);
+	font-size:.5em;
+	font-family: graphikregular, arial;
+
+}
+
+main section:nth-of-type(3) img {
+	transition:var(--basic-transition-time);
+}
+
+main section:nth-of-type(3) a {
+	/* background-color: var(--brand-color); */
+	background-image: linear-gradient(to bottom, var(--bright-brand-color) 40%, var(--brand-color) 40%);
+	margin:auto;
+	width:90%;
+	aspect-ratio: 1/1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap:1em;
+
+	position: relative;
+
+	animation-duration:.6s;
+}
+
+main section:nth-of-type(3):hover a {
+	animation-name:advertentie-gradient-shift;
+	animation-fill-mode: forwards;
+
+	overflow:hidden;
+	
+}
+
+@keyframes advertentie-gradient-shift {
+	0% {
+		background-image: linear-gradient(to bottom, var(--bright-brand-color)  40%, var(--brand-color) 40%);
+	}
+
+	25% {
+		background-image: linear-gradient(to bottom, var(--bright-brand-color)  45%, var(--brand-color) 45%);
+	}
+
+	50% {
+		background-image: linear-gradient(to bottom, var(--bright-brand-color)  50%, var(--brand-color) 50%);
+	}
+
+	75% {
+		background-image: linear-gradient(to bottom, var(--bright-brand-color)  55%, var(--brand-color) 55%);
+	}
+
+	100% {
+		background-image: linear-gradient(to bottom, var(--bright-brand-color)  60%, var(--brand-color) 60%);
+	}
+}
+
+main section:nth-of-type(3).spinning {
+	padding:2em;
+
+	border:dashed .3em var(--color-background);
+
+	animation-name:spinning-background;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes spinning-background {
+	0% {
+		background: linear-gradient(
+			0deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+	10% {
+		background: linear-gradient(
+			36deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+	20% {
+		background: linear-gradient(
+			72deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+	30% {
+		background: linear-gradient(
+			108deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+	40% {
+		background: linear-gradient(
+			144deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+	50% {
+		background: linear-gradient(
+			180deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+	60% {
+		background: linear-gradient(
+			216deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+	60% {
+		background: linear-gradient(
+			242deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+	70% {
+		background: linear-gradient(
+			278deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+	80% {
+		background: linear-gradient(
+			304deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+	90% {
+		background: linear-gradient(
+			360deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+
+
+	100% {
+		background: linear-gradient(
+			0deg, 		
+			var(--star-color),
+			var(--attention-great-price-color),
+			var(--brand-color),
+			var(--adverentie-heading-emp-color-light)) 
+			border-box;
+	}
+}
+
+main section:nth-of-type(3):hover a img {
+	transform:scale(1.2);
+}
+
+main section:nth-of-type(3) a h3 {
+	font-family: graphikthin, Arial, sans-serif;
+	color:var(--adverentie-heading-emp-color-light);
+	font-size:1.5em;
+	width:60%;
+
+	/* align-self: flex-start; */
+	margin-left:1em;
+	margin-right:auto;
+
+	transition:var(--basic-transition-time);
+	transition-delay: .2s;
+
+}
+
+main section:nth-of-type(3) a h3::first-line {
+	font-family: graphikextrabold, Arial, sans-serif;
+
+}
+
+main section:nth-of-type(3):hover a h3 {
+	font-size:1.8em;
+	width:80%;
+}
+
+
+main section:nth-of-type(3) a img {
+	width:75%;
+	align-self: flex-end;
+
+}
+
+main section:nth-of-type(3) a p {
+	background-color:var(--bright-brand-color);
+	color:var(--color-background);
+
+	padding:.8em;
+
+	position:absolute;
+	left:.5em;
+	bottom:1.5em;
+}
+
+
+/* trending */
+main section:nth-of-type(4) > ul {
+	display: flex;
+	gap:1em;
+
+	padding:1em;
+	overflow-X:auto;
+
+	width:100%;
+
+	-webkit-overflow-scrolling: touch; /* voor iOS*/
+	-ms-overflow-style: none; /* voor IE */
+	scrollbar-width: none; /* voor firefox */
+}
+
+main section:nth-of-type(4) > ul::-webkit-scrollbar {
+	display:none;
+}
+
+main section:nth-of-type(4) > a {
+	color:var(--brand-color);
+	padding:.5em;
+
+	display:grid;
+	grid-template-columns: 10% max-content;
+	grid-template-rows: 1;
+	place-items: center;
+
+}
+
+main section:nth-of-type(4) > a.hoverAnimate {
+	color:var(--color-background);
+	animation-name:background-grow;
+	animation-duration: .6s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+
+}
+
+@keyframes background-grow {
+	0% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 0%,
+			var(--color-background) 0 100%
+		)
+	}
+
+	1% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 0% 1%,
+			var(--color-background) 1% 100%
+		)
+	}
+
+	5% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 0% 5%,
+			var(--color-background) 5% 100%
+		)
+	}
+
+	10% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 0% 10%,
+			var(--color-background) 10% 100%
+		)
+	}
+
+	15% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 0% 15%,
+			var(--color-background) 15% 100%
+		)
+	}
+
+	20% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 0% 20%,
+			var(--color-background) 20% 100%
+		)
+	}
+
+	25% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 0% 25%,
+			var(--color-background) 25% 100%
+		)
+	}
+
+	30% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 0% 30%,
+			var(--color-background) 30% 100%
+		)
+	}
+
+	40% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 0% 40%,
+			var(--color-background) 40% 100%
+		)
+	}
+
+	50% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 50%,
+			var(--color-background) 50% 100%
+		)
+	}
+
+	55% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 55%,
+			var(--color-background) 55% 100%
+		)
+	}
+
+	60% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 60%,
+			whitvar(--color-background)e 60% 100%
+		)
+	}
+
+	70% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 70%,
+			var(--color-background) 70% 100%
+		)
+	}
+
+	80% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 80%,
+			var(--color-background) 80% 100%
+		)
+	}
+
+	90% {
+		background-image: linear-gradient(
+			to right,
+			var(--brand-color) 90%,
+			var(--color-background) 90% 100%
+		)
+	}
+
+	100% {
+		background-image: linear-gradient(
+			to right,
+			var(--color-background) 0%,
+			var(--brand-color) 0% 100%
+		)
+	}
+}
+
+
+main section:nth-of-type(4) > a span {
+	background-color:var(--brand-color);
+	border-radius: 20%;
+	grid-row-start:1;
+	grid-column-start:1;
+
+	width:.8em;
+	height:.125em;
+
+	transition-duration: 1s;
+
+}
+
+main section:nth-of-type(4) > a span.hoverAnimate {
+	background-color:var(--color-background);
+	margin-right:1em;
+
+}
+
+main section:nth-of-type(4) > a span:first-of-type {
+	transform-origin: right top;
+	transform: rotate(20deg);
+
+}
+
+main section:nth-of-type(4) > a span:first-of-type.hoverAnimate {
+	transform-origin: bottom right;
+	transform:rotate(160deg) translateY(-.2em);
+
+}
+
+main section:nth-of-type(4) > a span:last-of-type {
+	transform: rotate(-20deg);
+	transform-origin: right bottom;
+	
+}
+
+main section:nth-of-type(4) > a span:last-of-type.hoverAnimate {
+	transform-origin: top right;
+	transform:rotate(-160deg) translateY(.2em);
+
+}
+
+main section:nth-of-type(4) > ul li img {
+	transition-duration: var(--basic-transition-time);
+
+}
+
+main section:nth-of-type(4) > ul li:hover img {
+	transform:scale(1.2);
+
+}
+
+main section:nth-of-type(4) > ul li:hover button {
+	transform:scale(1.3);
+	box-shadow: .1em .1em .1em var(--brand-color);
+}
+
+
+main section:nth-of-type(4) > ul > li a {
+	display:grid;
+
+	grid-template-columns: 10em;
+	grid-template-rows:10em 25% min-content;
+	row-gap: 1em;
+
+	position:relative;
+
+	transition:var(--basic-transition-time);
+}
+
+main section:nth-of-type(4) > ul > li a:hover {
+	grid-template-rows:10em min-content min-content;
+}
+
+main section:nth-of-type(4) > ul > li a h3 {
+	grid-row-start: 2;
+	grid-row-end: 3;
+
+	overflow:hidden;
+}
+
+main section:nth-of-type(4) > ul > li a img {
+	grid-row-start: 1;
+	grid-row-end: 2;
+
+	place-self:center;
+
+	max-height:80%;
+	max-width:80%;
+
+}
+
+main section:nth-of-type(4) > ul > li a ul {
+	grid-row-start: 3;
+	grid-row-end: 4;
+}
+
+main section:nth-of-type(4) > ul > li a button {
+	grid-row-start:1;
+	grid-row-end:2;
+
+	position: absolute;
+	top:.1em;
+	right:.1em;
+
+	width:2.3em;
+	aspect-ratio: 1/1;
+	border-radius:50%;
+	border:solid .1em var(--brand-color);
+	background-color:var(--color-background);
+
+	display: flex;
+	justify-content: center;
+	align-items:center;
+
+	transition:var(--basic-transition-time);
+}
+
+main section:nth-of-type(4) > ul > li a button svg {
+	width:75%;
+	fill:var(--brand-color);
+}
+
+main section:nth-of-type(4) > ul > li a button:hover {
+	background-color: var(--brand-color);
+}
+
+main section:nth-of-type(4) > ul > li a button:focus {
+	background-color:var(--star-color);
+	transform:scale(1.2);
+}
+
+main section:nth-of-type(4) > ul > li a button svg:hover {
+	fill:var(--color-background);
+}
+
+main section:nth-of-type(4) > ul > li > a > ul li:first-of-type {
+	color:var(--attention-great-price-color);
+
+	transition-duration: var(--basic-transition-time);
+}
+
+main section:nth-of-type(4) > ul > li:hover > a > ul li:first-of-type {
+	font-size:1.5em;
+}
+
+main section:nth-of-type(4) > ul > li:nth-of-type(odd) > a > ul li:last-of-type {
+	color:var(--attention-great-price-color);
+	font-weight:bold;
+	background-color:var(--color-background);
+	
+}
+
+main section:nth-of-type(4) > ul > li:nth-of-type(even) > a > ul li:last-of-type {
+	color:var(--color-background);
+	background-color: var(--attention-great-price-color);
+
+	padding:.2em;
+
+	width:min-content;
+	border-radius:10%;
+}
+
+
+@media (prefers-color-scheme: dark) {
+	/* ALLEEN VOOR HOMEPAGE */
+	header > a img,
+	header > button img,
+	header > nav:nth-of-type(1) button,
+	footer > section:nth-of-type(4) > ul li:first-of-type {
+		filter: brightness(0) invert(1);
+	}
+
+	img {
+		filter: brightness(.85);
+	}
+}

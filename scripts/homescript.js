@@ -1,23 +1,26 @@
 // JavaScript Document
 console.log("hi");
 
-// categoriën hoofdmenu
-const buttonNav = document.querySelector("header > button");
-const hamburgerNav = document.querySelector("header nav:first-of-type");
-const buttonNavClose = document.querySelector("header nav button");
-
-const body = document.querySelector("body");
-
-const navContainer = document.querySelector("header > nav > ul");
-const secondNav = document.querySelector("header nav:nth-of-type(2)");
-const headerForm = document.querySelector("header form");
-const main = document.querySelector("main");
-const footer = document.querySelector("footer");
 
 // nu trending "bekijk al je persoonlijke aanbevelingen"
 const spanPijltje1 = document.querySelector("main section:nth-of-type(4) > a span:first-of-type");
 const spanPijltje2 = document.querySelector("main section:nth-of-type(4) > a span:last-of-type")
 const aElement = document.querySelector("main section:nth-of-type(4) > a ");
+
+// advertentie 
+const advertentieLink = document.querySelector("main > section:nth-of-type(3) a");
+const advertentieContainer = document.querySelector("main > section:nth-of-type(3)");
+
+advertentieLink.addEventListener("focus", spinningAnimation);
+advertentieLink.addEventListener("blur", spinningAnimation);
+
+function spinningAnimation() {
+	if(advertentieContainer.classList.contains("spinning")) {
+		advertentieContainer.classList.remove("spinning");
+	} else {
+		advertentieContainer.classList.add("spinning");
+	}
+}
 
 aElement.addEventListener("mouseover", trendingAnimation);
 aElement.addEventListener("mouseout", trendingAnimation);
@@ -158,36 +161,3 @@ function createCaroCarrousel(carrouselID) {
   createCaroCarrousel("categoriencarrousel");
   //je kunt hier ook meerdere carrousellen activeren
 })();
-
-
-
-// Functies en eventlisteners
-function openMenu() {
-    console.log("boe");
-    hamburgerNav.classList.add("open");
-    body.classList.add("antiScroll");
-
-	navContainer.removeAttribute("inert", true);
-	secondNav.setAttribute("inert", true);
-	headerForm.setAttribute("inert", true);
-	main.setAttribute("inert", true);
-	footer.setAttribute("inert", true);
-	
-	
-}
-
-buttonNav.addEventListener("click", openMenu);
-
-
-function closeMenu() {
-    hamburgerNav.classList.remove("open");
-    body.classList.remove("antiScroll");
-
-	navContainer.setAttribute("inert", true);
-	secondNav.removeAttribute("inert", true);
-	headerForm.removeAttribute("inert", true);
-	main.removeAttribute("inert", true);
-	footer.removeAttribute("inert", true);
-}
-
-buttonNavClose.addEventListener("click", closeMenu);

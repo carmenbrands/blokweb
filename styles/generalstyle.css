@@ -1,0 +1,698 @@
+/**************/
+/* CSS REMEDY */
+/**************/
+*, *::after, *::before {
+    box-sizing:border-box;
+    margin:0;  
+    padding:0;
+  }
+  
+  button, summary {
+      cursor: pointer;
+  }
+  
+  
+  
+  /*********************/
+  /* CUSTOM PROPERTIES */
+  /*********************/  
+:root {
+	/* startje */
+	--color-text:#111;
+	--color-background:rgb(255, 255, 255);
+
+	--brand-color:#0000A4;
+	--bright-brand-color: #0404eb;
+
+	--attention-great-price-color:#b30000;
+
+	--adverentie-heading-emp-color-light:#89cff0;
+	--border-color-links:#d3d3d3;
+
+	--star-color:orange;
+
+	--margin-between-sections:2em;
+
+	--basic-transition-time:.6s;
+}
+
+@font-face {
+	font-family: graphikthin;
+	src: url(../fonts/GraphikLight.otf);
+}
+
+@font-face {
+	font-family: graphikregular;
+	src: url(../fonts/GraphikRegular.otf);
+}
+
+@font-face {
+	font-family: radcliffesemibold;
+	src: url(../fonts/Radcliffe-SemiBold-trial.ttf);
+}
+
+@font-face {
+	font-family: graphikextrabold;
+	src: url(../fonts/GraphikBold.otf);
+}
+
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+.forever-hidden-until {
+	display:none;
+}
+
+/****************/
+/* JOUW STYLING */
+/****************/
+
+/* General */
+body {
+	background-color: var(--color-background);
+}
+
+ul {
+	list-style: none;
+}
+
+ul li,p {
+	font-family: graphikregular, Arial, sans-serif;
+	font-size:.9em;
+}
+
+button {
+	border:none;
+	background:none;
+}
+
+p,
+a,
+td {
+	text-decoration:none;
+	font-family: graphikregular, Arial, Sans-serif;
+}
+
+h1, h2, h3,
+th {
+	font-family:graphikextrabold, sans-serif;
+	color:var(--color-text);
+}
+
+h1 {
+	font-size:1.5em;
+}
+
+h2 {
+	font-size:1.2em;
+	margin-left:1em;
+}
+
+h3,
+td {
+	font-size:.8em;
+}
+
+li a h3 {
+	font-size:1em;
+}
+
+section {
+	margin-top:var(--margin-between-sections);
+}
+
+*:focus {
+	outline:none;
+	box-shadow: 0em 0em .5em var(--brand-color);
+
+}
+
+
+/* header */
+header {
+	display:flex;
+	flex-wrap:wrap;
+	align-items: center;
+	gap:1em;
+
+	padding-top:.8em;
+
+	background-color: var(--color-background);
+
+}
+
+/* logo */
+header > a {
+	width:9em;
+	transition:var(--basic-transition-time);
+}
+
+header > a:hover {
+	transform:scale(1.2);
+}
+
+header > a:focus {
+	border:solid .2em var(--star-color);
+}
+
+header > a img {
+	width:90%;
+}
+
+
+/* menubutton */
+header > button {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+
+	order:-100;
+	width:2.5em;
+	aspect-ratio: 1/1;
+
+	transition:var(--basic-transition-time);
+
+}
+
+header > button:hover,
+header nav:nth-of-type(1) button:hover svg {
+	transform: scale(1.3) rotate(180deg);
+
+}
+
+header > button:focus {
+	background-color:var(--star-color);
+	border:solid 0em var(--star-color);
+	border-radius:50%;
+}
+
+header > button img {
+	display: block;
+	width:50%;
+
+}
+
+
+/* header nav categoriën */
+header nav:nth-of-type(1) {
+	position: fixed;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	background-color:var(--color-background);
+	overflow:auto;
+
+	transform:translateX(-100%);
+	transition:.3s;
+
+	z-index:100;
+	
+}
+
+header nav:nth-of-type(1) button {
+	width:100%;
+	height:4em;
+
+	display:flex;
+	justify-content: flex-end;
+	align-items:center;
+
+}
+
+header nav:nth-of-type(1) button:focus svg {
+	background-color:var(--star-color);
+	border-radius:50%;
+}
+
+header nav:nth-of-type(1) button svg {
+	height:50%;
+	aspect-ratio: 1/1;
+
+	transition:var(--basic-transition-time);
+}
+
+header nav:nth-of-type(1) ul {
+	padding:1em;
+}
+
+header nav:nth-of-type(1) ul li {
+	transition: var(--basic-transition-time);
+}
+
+header nav:nth-of-type(1) ul li:hover,
+header nav:nth-of-type(1) ul li a:focus {
+	box-shadow: .5em 1em 1em var(--border-color-links),
+				-.5em -.5em 1em var(--border-color-links);
+}
+
+header nav:nth-of-type(1) ul li:hover a {
+	font-size:1.3em;
+}
+
+header nav:nth-of-type(1) ul li a {
+	display:flex;
+	flex-direction:row-reverse;
+
+	justify-content: space-between;
+	gap:1em;
+
+	align-items:center;
+
+	border-top: solid .1em var(--border-color-links);
+
+	padding:.3em;
+
+	color:var(--color-text);
+
+	transition:var(--basic-transition-time);
+
+}
+
+header nav:nth-of-type(1) ul li a:focus {
+	font-size:1.3em;
+	border: solid .5em var(--star-color);
+}
+
+header nav:nth-of-type(1) ul li:last-of-type a {
+	border-bottom: solid .1em var(--border-color-links);
+}
+
+header nav:nth-of-type(1) ul li a img {
+	width:4em;
+	aspect-ratio: 1/1;
+}
+
+header nav:nth-of-type(1).open {
+	transform:translateX(0%);
+}
+
+
+/* header nav wensenlijst, account en winkelwagen */
+header nav:nth-of-type(2) {
+	margin-left:auto;
+
+}
+
+header nav:nth-of-type(2) ul {
+	display: flex;
+}
+
+header nav:nth-of-type(2) ul li {
+	display: flex;
+
+	transition:var(--basic-transition-time);
+}
+
+header nav:nth-of-type(2) ul li a {
+	height:2.5em;
+	aspect-ratio: 1/1;
+
+	padding:.2em;
+
+	display:flex;
+	align-items: center;
+	justify-content: center;
+
+	transition:var(--basic-transition-time);
+}
+
+header nav:nth-of-type(2) ul li:hover {
+	background-color:var(--brand-color);
+	border:solid 0em var(--color-background);
+	border-radius:50%;
+
+}
+
+header nav:nth-of-type(2) ul li:hover a svg path {
+	fill:var(--color-background);
+}
+
+header nav:nth-of-type(2) ul li a:focus {
+	background-color:var(--star-color);
+	border:solid 0em var(--star-color);
+	border-radius:50%;
+
+}
+
+header nav:nth-of-type(2) ul li a svg {
+	height:60%;
+	width:auto;
+	display:block;
+}
+
+.icon {
+	fill:var(--brand-color);
+}
+
+
+/* header zoekbalk */
+header form {
+	display:flex;
+	align-items:center;
+	justify-content: center;
+
+	background-color:var(--brand-color);
+	width:100%;
+	height:4em;
+	position: relative;
+
+	animation-duration: .6s;
+}
+
+header form:hover input {
+	height:85%;
+}
+
+header form input {
+	width:95%;
+	height:80%;
+	border:var(--brand-color) solid .5em;
+	border-radius:2em;
+	padding:1em;
+
+	animation-duration: .1s;
+}
+
+header form input:focus {
+	transform:scale(1.1);
+	border:var(--star-color) solid .5em;
+}
+
+header form input:active {
+	height:95%;
+}
+
+
+header form button {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	width:2em;
+	aspect-ratio: 1/1;
+	
+	position: absolute;
+	right:3.8em;
+
+	transition:var(--basic-transition-time);
+
+}
+
+header form button:focus {
+	background-color: var(--star-color);
+	border:solid 0em var(--color-background);
+	border-radius: 50%;
+
+	transform:scale(1.2);
+}
+
+header form button:hover {
+	animation-name:search-button-happy-jump;
+	animation-duration: .6s;
+	animation-iteration-count: 1;
+	animation-fill-mode:forwards;
+}
+
+header form button svg {
+	display:block;
+	width:75%;
+	height:75%;
+	fill:var(--brand-color);
+
+}
+
+header form:hover button svg {
+	animation-name:search-button-happy-jump;
+	animation-duration: .6s;
+	animation-iteration-count: 1;
+
+}
+
+@keyframes search-button-happy-jump {
+	0% {
+		transform:translateY(0);
+	}
+
+	20% {
+		transform:translateY(-.6em);
+	}
+
+	60% {
+		transform:translateY(.3em);
+	}
+
+	80% {
+		transform:translateY(-.8em);
+	}
+
+	100% {
+		transform:translateY(-.8em);
+	}
+}
+
+/* main */
+main {
+	background-color: var(--color-background);
+}
+
+/* footer */
+
+/* Ontdek alles bij bol.com*/
+
+footer section:first-of-type ul {
+	padding:.3em;
+}
+
+footer section:first-of-type ul li {
+	border-bottom: solid .1em var(--border-color-links);
+	padding:1em;
+
+	color:var(--color-text);
+}
+
+
+/* Service en contact */
+footer > section:nth-of-type(2) {
+	background-color:var(--brand-color);
+
+	padding-top: 2em;
+
+	width:100%;
+	aspect-ratio: 1/.5;
+}
+
+footer > section:nth-of-type(2) h2 {
+	color:var(--color-background);
+
+}
+
+footer > section:nth-of-type(2) section {
+	display:grid;
+	grid-template-columns: 20% 70%;
+}
+
+footer > section:nth-of-type(2) section:last-of-type {
+	margin-bottom:2em;
+}
+
+footer > section:nth-of-type(2) section h3 {
+	color:var(--color-background);
+
+	grid-column-start:2;
+	grid-column-end:3;
+
+}
+
+footer > section:nth-of-type(2) section p {
+	color:var(--color-background);
+	
+	grid-column-start:2;
+	grid-column-end:3;
+
+}
+
+footer > section:nth-of-type(2) section svg {
+	width:50%;
+	fill:var(--color-background);
+
+	grid-row-start:1;
+	grid-row-end:3;
+
+	place-self:center;
+
+}
+
+footer > section:nth-of-type(2) ul {
+	background-color:var(--color-background);
+}
+
+footer > section:nth-of-type(2) ul li {
+	border-bottom: solid .1em var(--border-color-links);
+	padding:1em;
+
+	color:var(--color-text);
+}
+
+
+/* Wil je ons volgen? */
+footer > section:nth-of-type(3) {
+	display:flex;
+	flex-direction: column;
+	margin:auto;
+	padding: var(--margin-between-sections);
+
+	width:95%;
+
+	border-bottom: solid .1em var(--border-color-links);
+
+}
+
+footer > section:nth-of-type(3) h2 {
+	margin:1em auto;
+}
+
+footer > section:nth-of-type(3) ul {
+	display:flex;
+
+	margin:auto;
+	width:50%;
+}
+
+footer > section:nth-of-type(3) p {
+	margin:1em auto;
+
+	color:var(--color-text);
+}
+
+footer > section:nth-of-type(3) p a {
+	color:var(--brand-color);
+}
+
+footer > section:nth-of-type(3) ul li {
+	width:calc(100%/6);
+	
+}
+
+footer > section:nth-of-type(3) ul li svg {
+	fill:var(--brand-color);
+
+	width:75%;
+	aspect-ratio: 1/1;
+}
+
+/* Woordmerk en thuiswinkelwaarborg */
+footer > section:nth-of-type(4) {
+	display:flex;
+	flex-direction: column;
+	margin:auto;
+
+	width:100%;
+	aspect-ratio: 1/.8;
+
+}
+
+footer > section:nth-of-type(4) ul {
+	display:flex;
+	flex-wrap:wrap;
+
+	width:80%;
+	margin:auto;
+	
+}
+
+footer > section:nth-of-type(4) ul li {
+	display:flex;
+	flex-direction: column;
+	margin:auto;
+
+	color:var(--color-text);
+
+}
+
+footer > section:nth-of-type(4) ul li:first-of-type img {
+	margin:1em auto;
+	width:80%;
+
+}
+
+footer > section:nth-of-type(4) ul li:nth-of-type(2) {
+	flex-direction:row;
+
+	align-items:center;
+	justify-content:center;
+
+	font-size:.8em;
+}
+
+
+footer > section:nth-of-type(4) ul li:nth-of-type(2) img {
+	width:20%;
+
+	order:-100;
+}
+
+footer > section:nth-of-type(4) ul li:nth-of-type(2) a,
+footer > section:nth-of-type(4) > p a {
+	color: var(--color-text);
+	text-decoration: underline var(--brand-color);
+}
+
+
+footer > section:nth-of-type(4) ul li:nth-of-type(3),
+footer > section:nth-of-type(4) ul li:nth-of-type(4),
+footer > section:nth-of-type(4) ul li:nth-of-type(5),
+footer > section:nth-of-type(4) ul li:nth-of-type(6) {
+	margin:.2em 0;
+	padding:.2em 1em;
+
+	font-size:.7em;
+
+	border-left: solid .1em var(--border-color-links);
+	border-right: solid .1em var(--border-color-links);
+}
+
+footer > section:nth-of-type(4) ul li:nth-of-type(6) {
+	border-right:none;
+}
+
+footer > section:nth-of-type(4) > p {
+	width:80%;
+	margin:auto;
+
+	font-size:.6em;
+	text-align:center;
+
+	color:var(--color-text);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root{
+		--color-text:gold;
+		--color-background:#121212;
+	
+		--brand-color:#b3b3f9;
+		--bright-brand-color: #6d6d94;
+	
+		--attention-great-price-color:#ff4d4d;
+	
+		--adverentie-heading-emp-color-light:#ffff;
+		--border-color-links:#d3d3d3;
+	
+		--star-color:orange;
+	}
+
+	header nav:nth-of-type(2) ul li a:focus svg path {
+		fill: var(--color-background);
+	
+	}
+
+
+
+}

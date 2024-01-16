@@ -1,0 +1,439 @@
+main {
+    display:flex;
+    flex-direction: column;
+}
+
+/* product in het kort */
+main > section:first-of-type ul {
+    display:flex;
+    flex-wrap:wrap;
+    gap:.2em;
+    
+    align-items: center;
+    
+    width:80%;
+}
+
+main > section:first-of-type ul li {
+    border-left: solid .125em #d3d3d3;
+    margin: 0em .5em;
+    padding:.5em;
+
+    font-size:.8em;
+}
+
+main > section:first-of-type ul li a {
+    color:var(--brand-color);
+}
+
+main > section:first-of-type ul li:nth-of-type(3) {
+    display:flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+/* bron voor de sterren https://www.coding-dude.com/wp/css/css-star/ */
+main > section:first-of-type > ul li:nth-of-type(3) div {
+    margin:1em auto;
+    font-size:.8em;
+    position: relative;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-right: 1em solid transparent;
+    border-bottom: 0.7em solid var(--star-color);
+    border-left: 1em solid transparent;
+    transform: rotate(35deg);
+ }
+
+main > section:first-of-type > ul li:nth-of-type(3) div:before {
+    border-bottom: 0.8em solid var(--star-color);
+    border-left: 0.3em solid transparent;
+    border-right: 0.3em solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -0.45em;
+    left: -0.65em;
+    display: block;
+    content:"";
+    transform: rotate(-35deg);
+}
+
+main > section:first-of-type > ul li:nth-of-type(3) div:after {
+    position: absolute;
+    display: block;
+    top: 0.03em;
+    left: -1.05em;
+    width: 0;
+    height: 0;
+    border-right: 1em solid transparent;
+    border-bottom: 0.7em solid var(--star-color);
+    border-left: 1em solid transparent;
+    transform: rotate(-70deg);
+    content:"";
+}
+
+main > section:first-of-type ul li:last-of-type {
+    border-right: solid .2em #d3d3d3;
+}
+   
+
+/* productfoto's */
+main > section:nth-of-type(2) {
+    display:flex;
+    flex-direction:column;
+    gap:var(--margin-between-sections);
+
+    position:relative;
+
+    padding:.5em;
+}
+
+main > section:nth-of-type(2) > figure img {
+    max-width:90%;
+    max-height:90%;
+
+}
+
+main > section:nth-of-type(2) > figure {
+    display:flex;
+
+    height:50vh;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
+}
+
+main > section:nth-of-type(2) > button {
+    position:absolute;
+    top:0;
+    right:2em;
+
+    width:2.5em;
+    aspect-ratio:1/1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color:var(--color-background);
+    border:solid .1em var(--brand-color);
+    border-radius: 50%;
+}
+
+main > section:nth-of-type(2) > button svg {
+    width:85%;
+    aspect-ratio: 1/1;
+
+}
+
+main > section:nth-of-type(2) > button svg path {
+    fill:var(--brand-color);
+}
+
+main > section:nth-of-type(2) ul {
+    display: flex;
+    gap:1em;
+    height: 8em;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+}
+
+main > section:nth-of-type(2) ul li {
+    height:85%;
+    aspect-ratio: 1/1;
+
+    border:solid var(--border-color-links) .1em;
+
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    display: flex;
+
+}
+
+main > section:nth-of-type(2) ul li img {
+    margin:auto;
+    max-width:95%;
+    max-height:95%;
+
+}
+
+
+/* in winkelwagen */ 
+main > section:nth-of-type(3) {
+    width:100%;
+    margin:auto;
+    padding-bottom:2em;
+
+    border-top:solid .125em var(--border-color-links);
+    border-bottom:solid .125em var(--border-color-links);
+
+    display:flex;
+    flex-direction: column;
+}
+
+main > section:nth-of-type(3) > ul:last-of-type {
+    width:95%;
+    margin:auto;
+
+    list-style-image: url('../images/vinkje.svg');
+    padding:1em;
+}
+
+main > section:nth-of-type(3) > ul:last-of-type li {
+    margin:.5em;
+}
+
+main > section:nth-of-type(3) > ul:last-of-type li em {
+    font-family:graphikextrabold, sans-serif;
+    font-style:normal;
+}
+
+main > section:nth-of-type(3) > a {
+    width:95%;
+    margin:auto;
+    color:var(--brand-color);
+
+}
+
+
+/* main > section:nth-of-type(3) {
+    width:95%;
+    margin:auto;
+}
+
+main > section:nth-of-type(3) ul {
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+
+main > section:nth-of-type(3) ul li {
+    color:var(--color-text);
+}
+
+main > section:nth-of-type(3) ul li:first-of-type {
+    height:5em;
+    width:80%;
+    margin-left:auto;
+}
+
+main > section:nth-of-type(3) ul li:first-of-type button:first-of-type {
+    width:80%;
+    height:80%;
+}
+
+main > section:nth-of-type(3) ul li:first-of-type button:first-of-type svg {
+    height:50%;
+    aspect-ratio: 1/1;
+}
+
+main > section:nth-of-type(3) ul li:first-of-type button:first-of-type svg path {
+    fill:var(--color-text);
+}
+
+main > section:nth-of-type(3) ul li:first-of-type button:last-of-type {
+    display:none;
+}
+
+main > section:nth-of-type(3) ul li:first-of-type button:first-of-type {
+    display: flex;
+    flex-direction:row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+
+    background-color:var(--star-color);
+} */
+
+/* Tabel met productspecificaties */
+main > section:nth-of-type(4) {
+    width:100%;
+    margin:auto;
+    padding:2em 0;
+
+    display:flex;
+    flex-direction:column;
+    gap:1em;
+
+    border-top:solid .125em var(--border-color-links);
+    border-bottom:solid .125em var(--border-color-links);
+}
+
+main > section:nth-of-type(4) > button {
+    color:var(--brand-color);
+    background-color: hotpink;
+    padding:.5em;
+
+    width:3em;
+    aspect-ratio: 1/1;
+
+}
+
+/* SPAN WORDT NOG NIET ZICHTBAAR */
+main > section:nth-of-type(4) > button span {
+    background-color:var(--brand-color);
+	border-radius: 20%;
+
+	width:100%;
+	height:1em;
+}
+
+main > section:nth-of-type(4) > button span:first-of-type {
+	transform: rotate(20deg);
+}
+
+main > section:nth-of-type(4) > button span:last-of-type {
+    transform: rotate(-20deg);
+}
+
+main > section:nth-of-type(4) > section {
+    position: fixed;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	background-color:var(--color-background);
+	overflow:auto;
+
+    margin-top:0;
+
+	transform:translateX(100%);
+	transition:var(--basic-transition-time);
+}
+
+main > section:nth-of-type(4) > section button {
+    width:100%;
+    height:4em;
+    font-size:1em;
+
+    display: flex;
+    align-items: center;
+    gap:1em;
+    padding-left:1.5em;
+
+    margin:var(--margin-between-sections) 0em;
+
+    border-bottom:solid .125em var(--border-color-links);
+}
+
+main > section:nth-of-type(4) > section button img {
+    height:95%;
+    aspect-ratio: 1/2;
+}
+
+
+main > section:nth-of-type(4) > section h2 {
+    margin-bottom:var(--margin-between-sections);
+}
+
+main > section:nth-of-type(4) > section table {
+    border-spacing:0;
+    width:100%;
+    margin-bottom:var(--margin-between-sections);
+}
+
+main > section:nth-of-type(4) > section.specsOpen {
+    transform:translateX(0%);
+}
+
+main > section:nth-of-type(4) > section table td {
+    padding:.5em;
+}
+main > section:nth-of-type(4) > section table thead tr {
+    background-color:var(--color-background);
+}
+
+main > section:nth-of-type(4) > section table thead tr th {
+    text-align: start;
+    padding:.5em;
+}
+
+main > section:nth-of-type(4) > section table tbody tr td {
+    width:50%;
+    padding:1em;
+}
+
+main > section:nth-of-type(4) > section table tbody tr:nth-of-type(odd) {
+    background-color:rgb(235, 235, 235);
+}
+
+main > section:nth-of-type(4) > section table tbody tr:nth-of-type(even) {
+    background-color:var(--color-background);
+}
+
+/* navigatie anderen bekeken ook */
+main > section:nth-of-type(5) {
+    width:95%;
+    margin:auto;
+}
+
+main > section:nth-of-type(5) h2 {
+    margin-top:var(--margin-between-sections);
+}
+
+main > section:nth-of-type(5) nav {
+    width:100%;
+    margin-top:var(--margin-between-sections);
+}
+
+main > section:nth-of-type(5) nav ul {
+    width:100%;
+
+    display:flex;
+    flex-direction:row;
+    overflow-x: auto;
+    gap:1em;
+}
+
+main > section:nth-of-type(5) nav ul li {
+    width:calc(100%/2.5);
+
+}
+
+main > section:nth-of-type(5) nav ul li a {
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    
+    position:relative;
+}
+
+main > section:nth-of-type(5) nav ul li a img {
+    order:-1;
+    max-width:85%;
+    max-height:85%;
+
+    margin:auto;
+}
+
+main > section:nth-of-type(5) nav ul li a h3 {
+    order:0;
+}
+
+main > section:nth-of-type(5) nav ul li a ul {
+    order:1;
+}
+
+main > section:nth-of-type(5) nav ul li a button {
+    position:absolute;
+    top:.2em;
+    right:.2em;
+    width:2em;
+    aspect-ratio: 1/1;
+}
+
+
+/* Plus en minpunten */
+main > section:nth-of-type(6) {
+    width:95%;
+    margin:var(--margin-between-sections) auto;
+}
+
+/* omschrijving*/
+main > section:nth-of-type(7) {
+    width:95%;
+    margin:auto;
+}
